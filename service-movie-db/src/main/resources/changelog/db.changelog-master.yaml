@@ -1,0 +1,179 @@
+databaseChangeLog:
+  - changeSet:
+      id: 26022023-1
+      author: Pavel
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_actors
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(64)
+              - column:
+                  name: date_of_birth
+                  type: DATE
+            tableName: actors
+  - changeSet:
+      id: 26022023-2
+      author: Pavel
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_genres
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(32)
+              - column:
+                  name: description
+                  type: VARCHAR(256)
+            tableName: genres
+  - changeSet:
+      id: 26022023-3
+      author: Pavel
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_movies
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: title
+                  type: VARCHAR(128)
+              - column:
+                  name: description
+                  type: VARCHAR(256)
+            tableName: movies
+  - changeSet:
+      id: 26022023-4
+      author: Pavel
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_movies_actors
+                  name: actor_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_movies_actors
+                  name: movie_id
+                  type: BIGINT
+            tableName: movies_actors
+  - changeSet:
+      id: 26022023-5
+      author: Pavel
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_movies_genres
+                  name: genre_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_movies_genres
+                  name: movie_id
+                  type: BIGINT
+            tableName: movies_genres
+  - changeSet:
+      id: 26022023-6
+      author: Pavel
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: name
+            constraintName: uc_actors_name
+            tableName: actors
+  - changeSet:
+      id: 26022023-7
+      author: Pavel
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: name
+            constraintName: uc_genres_name
+            tableName: genres
+  - changeSet:
+      id: 26022023-8
+      author: Pavel
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: actor_id
+            baseTableName: movies_actors
+            constraintName: fk_movact_on_actor
+            referencedColumnNames: id
+            referencedTableName: actors
+  - changeSet:
+      id: 26022023-9
+      author: Pavel
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: movie_id
+            baseTableName: movies_actors
+            constraintName: fk_movact_on_movie
+            referencedColumnNames: id
+            referencedTableName: movies
+  - changeSet:
+      id: 26022023-10
+      author: Pavel
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: genre_id
+            baseTableName: movies_genres
+            constraintName: fk_movgen_on_genre
+            referencedColumnNames: id
+            referencedTableName: genres
+  - changeSet:
+      id: 26022023-11
+      author: Pavel
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: movie_id
+            baseTableName: movies_genres
+            constraintName: fk_movgen_on_movie
+            referencedColumnNames: id
+            referencedTableName: movies
