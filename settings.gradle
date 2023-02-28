@@ -1,1 +1,2 @@
 rootProject.name = 'movie-lib'
+include 'service-movie-db'
