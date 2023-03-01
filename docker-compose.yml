@@ -1,21 +1,21 @@
 services:
-  movie-db-postgres:
-    container_name: movie-db-postgres
+  api-gateway-postgres:
+    container_name: postgres-api-gateway
     image: postgres:15-alpine
     restart: always
     ports:
-      - "5432:5432"
+      - "5433:5433"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
 
-  api-gateway-postgres:
-    container_name: api-gateway-postgres
+  movie-db-postgres:
+    container_name: postgres-movie-db
     image: postgres:15-alpine
     restart: always
     ports:
-      - "5433:5433"
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
