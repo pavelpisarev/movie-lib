@@ -14,7 +14,7 @@ public class SecurityConfig {
         http
             .authorizeExchange()
             .pathMatchers("/actuator/**").permitAll()
-            .anyExchange().authenticated()
+            .anyExchange().permitAll()
             .and()
 			.oauth2Login();
         return http.build();

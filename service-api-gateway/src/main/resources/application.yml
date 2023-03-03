@@ -13,7 +13,13 @@ spring:
               b15c524ec6af71a50550
             clientSecret:
               e331fb250208e6eea7b8e0867292afd4e43f958e
-
+  cloud:
+    gateway:
+      routes:
+        - id: film-db
+          uri: lb://film-db
+          predicates:
+            - Path=/api/**
 management:
   endpoints:
     web:
