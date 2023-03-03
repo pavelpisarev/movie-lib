@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/actors")
+@RequestMapping(path = "/api/v1/actors", produces = "application/json")
 public class ActorController {
     @Autowired
     ActorService actorService;

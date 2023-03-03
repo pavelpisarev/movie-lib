@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/genres")
+@RequestMapping(path = "/api/v1/genres", produces = "application/json")
 public class GenreController {
     @Autowired
     GenreService genreService;
