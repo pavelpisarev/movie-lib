@@ -1,6 +1,8 @@
 package org.example.gateway.service;
 
+import org.example.gateway.model.CustomAuthority;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultReactiveOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -20,6 +22,8 @@ public class CustomReactiveOAuth2UserService extends DefaultReactiveOAuth2UserSe
             String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
                 .getUserInfoEndpoint().getUserNameAttributeName();
             Set<GrantedAuthority> mappedAuthorities = new LinkedHashSet<>();
+            mappedAuthorities.add(new SimpleGrantedAuthority(CustomAuthority.SCOPE_ACTOR_EDIT.name()));
+            mappedAuthorities.add(new SimpleGrantedAuthority(CustomAuthority.SCOPE_GENRE_EDIT.name()));
             oAuth2User = new DefaultOAuth2User(mappedAuthorities, oAuth2User.getAttributes(), userNameAttributeName);
             return Mono.just(oAuth2User);
         });
