@@ -1,3 +1,4 @@
 rootProject.name = 'movie-lib'
 include 'service-movie-db'
 include 'service-api-gateway'
+include 'service-eureka-discovery-server'
