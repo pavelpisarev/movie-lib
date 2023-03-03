@@ -12,7 +12,9 @@ public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain oAuth2Config(ServerHttpSecurity http) {
         http
-            .authorizeExchange().anyExchange().authenticated()
+            .authorizeExchange()
+            .pathMatchers("/actuator/**").permitAll()
+            .anyExchange().authenticated()
             .and()
 			.oauth2Login();
         return http.build();

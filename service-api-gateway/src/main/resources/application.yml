@@ -1,3 +1,6 @@
+server:
+  port: 80
+
 spring:
   application:
     name: api-gateway
@@ -10,8 +13,14 @@ spring:
               b15c524ec6af71a50550
             clientSecret:
               e331fb250208e6eea7b8e0867292afd4e43f958e
-server:
-  port: 80
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
 
 eureka:
   client:
