@@ -6,13 +6,9 @@ spring:
     name: api-gateway
   security:
     oauth2:
-      client:
-        registration:
-          github:
-            clientId:
-              b15c524ec6af71a50550
-            clientSecret:
-              e331fb250208e6eea7b8e0867292afd4e43f958e
+      resourceserver:
+        jwt:
+          issuer-uri: issuer":"http://localhost:8078/realms/movie-lib
   cloud:
     gateway:
       routes:

@@ -1,15 +1,4 @@
 services:
-  api-gateway-postgres:
-    container_name: postgres-api-gateway
-    image: postgres:15-alpine
-    restart: always
-    ports:
-      - "5433:5433"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
-
   movie-db-postgres:
     container_name: postgres-movie-db
     image: postgres:15-alpine
@@ -20,3 +9,13 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
+
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:21.0
+    ports:
+      - 8078:8080
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    entrypoint: /opt/keycloak/bin/kc.sh start-dev
