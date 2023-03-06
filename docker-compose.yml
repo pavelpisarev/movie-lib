@@ -13,6 +13,7 @@ services:
   keycloak:
     container_name: keycloak
     image: quay.io/keycloak/keycloak:21.0
+    restart: always
     ports:
       - 8078:8080
     environment:

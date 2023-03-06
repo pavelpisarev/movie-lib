@@ -177,3 +177,5 @@ databaseChangeLog:
             constraintName: fk_movgen_on_movie
             referencedColumnNames: id
             referencedTableName: movies
+  - includeAll:
+      path: db/changelog/migrations

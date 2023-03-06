@@ -16,6 +16,7 @@ spring:
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.yaml
     drop-first: true
+    default-schema: public
     url: jdbc:postgresql://localhost:5432/postgres
     user: postgres
     password: postgres

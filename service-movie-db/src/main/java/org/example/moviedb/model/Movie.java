@@ -28,15 +28,15 @@ public class Movie {
     @EqualsAndHashCode.Exclude
     @ManyToMany
     @JoinTable(name = "movies_genres",
-        joinColumns = @JoinColumn(name = "movie_id"),
-        inverseJoinColumns = @JoinColumn(name = "genre_id"))
+        joinColumns = @JoinColumn(name = "genre_id"),
+        inverseJoinColumns = @JoinColumn(name = "movie_id"))
     private Set<Genre> genres = new LinkedHashSet<>();
 
     @Builder.Default
     @EqualsAndHashCode.Exclude
     @ManyToMany
     @JoinTable(name = "movies_actors",
-        joinColumns = @JoinColumn(name = "movie_id"),
-        inverseJoinColumns = @JoinColumn(name = "actor_id"))
+        joinColumns = @JoinColumn(name = "actor_id"),
+        inverseJoinColumns = @JoinColumn(name = "movie_id"))
     private Set<Actor> actors = new LinkedHashSet<>();
 }
