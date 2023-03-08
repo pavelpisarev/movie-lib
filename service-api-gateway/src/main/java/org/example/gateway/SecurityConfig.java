@@ -13,17 +13,17 @@ public class SecurityConfig {
             .pathMatchers("/actuator/**").permitAll()
             .pathMatchers("/api").permitAll()
 
-            .pathMatchers(HttpMethod.PUT, "/api/v1/actors/**").authenticated()
-            .pathMatchers(HttpMethod.POST, "/api/v1/actors/**").authenticated()
-            .pathMatchers(HttpMethod.DELETE, "/api/v1/actors/**").authenticated()
+            .pathMatchers(HttpMethod.PUT, "/api/v1/actors/**").hasAuthority(Authorities.ACTOR_EDIT.name())
+            .pathMatchers(HttpMethod.POST, "/api/v1/actors/**").hasAuthority(Authorities.ACTOR_EDIT.name())
+            .pathMatchers(HttpMethod.DELETE, "/api/v1/actors/**").hasAuthority(Authorities.ACTOR_EDIT.name())
 
-            .pathMatchers(HttpMethod.PUT, "/api/v1/genres/**").authenticated()
-            .pathMatchers(HttpMethod.POST, "/api/v1/genres/**").authenticated()
-            .pathMatchers(HttpMethod.DELETE, "/api/v1/genres/**").authenticated()
+                .pathMatchers(HttpMethod.PUT, "/api/v1/genres/**").hasAuthority(Authorities.GENRE_EDIT.name())
+            .pathMatchers(HttpMethod.POST, "/api/v1/genres/**").hasAuthority(Authorities.GENRE_EDIT.name())
+            .pathMatchers(HttpMethod.DELETE, "/api/v1/genres/**").hasAuthority(Authorities.GENRE_EDIT.name())
 
-            .pathMatchers(HttpMethod.PUT, "/api/v1/movies/**").authenticated()
-            .pathMatchers(HttpMethod.POST, "/api/v1/movies/**").authenticated()
-            .pathMatchers(HttpMethod.DELETE, "/api/v1/movies/**").authenticated()
+            .pathMatchers(HttpMethod.PUT, "/api/v1/movies/**").hasAuthority(Authorities.MOVIE_EDIT.name())
+            .pathMatchers(HttpMethod.POST, "/api/v1/movies/**").hasAuthority(Authorities.MOVIE_EDIT.name())
+            .pathMatchers(HttpMethod.DELETE, "/api/v1/movies/**").hasAuthority(Authorities.MOVIE_EDIT.name())
 
             .and()
             .oauth2Login();
